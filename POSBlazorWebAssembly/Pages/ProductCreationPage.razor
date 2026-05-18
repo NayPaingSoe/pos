@@ -1,10 +1,8 @@
 @page "/ProductCreate"
-@* ကုန်ပစ္စည်း အသစ်ထည့်သွင်းသည့် စာမျက်နှာ *@
 
 <div class="row" style="padding-left: 50px; padding-right:50px">
     <div class="col-md-6 mt-10">
         <label for="floatingTextarea">Product Name</label>
-        @* ကုန်ပစ္စည်း အမည် ရိုက်ထည့်ရန် *@
         <input type="text" class="form-control" @bind-value="Product.product_name" />
     </div>
     @*<div class="col-md-6 mt-10">
@@ -13,35 +11,27 @@
     </div>*@
     <div class="col-md-6 mt-10">
         <label for="floatingTextarea">Product Category Code</label>
-        @* အမျိုးအစား ကုဒ် ရိုက်ထည့်ရန် *@
         <input type="text" class="form-control" @bind-value="Product.product_category_code"/>
     </div>
     <div class="col-md-6 mt-10">
         <label for="floatingTextarea">Product Sale Price</label>
-        @* ရောင်းဈေး ရိုက်ထည့်ရန် *@
         <input type="text" class="form-control" @bind-value="Product.product_sale_price"  />
     </div>
     <div class="col-md-6 mt-10">
         <label for="floatingTextarea">Product Buying Price</label>
-        @* ဝယ်ဈေး ရိုက်ထည့်ရန် *@
         <input type="text" class="form-control" @bind-value="Product.product_buying_price"/>
     </div>
     <div class="col-md-6 mt-10">
-        @* နောက်သို့ပြန်သွားရန် နှင့် သိမ်းဆည်းရန် ခလုတ်များ *@
         <a class="btn btn-dark mt-3" href="/ProductIndex">Back</a>
         <button type="button" @onclick="Save" class="btn btn-success mt-3">Save</button>
     </div>
 </div>
 @code {
-    // ထည့်သွင်းမည့် ကုန်ပစ္စည်း အချက်အလက် Model
     private ProductCreationDataModel Product = new();
 
-    // သိမ်းဆည်းရန် လုပ်ဆောင်ချက်
     async Task Save()
     {
-        // Service မှတစ်ဆင့် Local Storage တွင် သိမ်းဆည်းခြင်း
         await db.SetProduct(Product);
-        // သိမ်းပြီးပါက Model ကို အသစ်ပြန်လုပ်ခြင်း
         Product = new ProductCreationDataModel();
     }
 }
