@@ -1,8 +1,12 @@
 ﻿@page "/Product"
+@* ကုန်ပစ္စည်း စာရင်း ပြသသည့် စာမျက်နှာ *@
+
 <div style="padding-left: 10px">
+    @* ကုန်ပစ္စည်း အသစ်ထည့်ရန် ခလုတ် *@
     <a class="btn btn-success mt-3" href="ProductCreate">Create</a>
 </div>
 <div class="col-sm-12">
+    @* ကုန်ပစ္စည်း စာရင်း ဇယား *@
     <table class="table" id="tbDataTable">
         <thead>
             <tr>
@@ -22,6 +26,7 @@
                 {
                     <tr>
                         <td>
+                            @* ပြင်ဆင်ရန် နှင့် ဖျက်ရန် ခလုတ်များ *@
                             <a class="btn btn-warning mt-3" href="/Product/Edit/@(item.product_id)">Edit</a>
                             <a class="btn btn-warning mt-3" href="/Product/Delete/@(item.product_id)">Delete</a>
                         </td>
@@ -40,10 +45,13 @@
 
 
 @code {
+    // ကုန်ပစ္စည်း စာရင်း သိမ်းဆည်းရန် List
     List<ProductCreationDataModel> Model = new();
 
+    // စာမျက်နှာ စတင်ချိန်တွင် လုပ်ဆောင်မည့် အလုပ်
     protected override async Task OnInitializedAsync()
     {
+        // Service မှတစ်ဆင့် ကုန်ပစ္စည်း စာရင်းကို ရယူခြင်း
         var lst = await db.GetProductList();
         Model = lst;
     }
