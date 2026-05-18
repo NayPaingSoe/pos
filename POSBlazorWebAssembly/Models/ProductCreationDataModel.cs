@@ -1,4 +1,4 @@
-﻿namespace POSBlazorWebAssembly.Models
+namespace POSBlazorWebAssembly.Models
 {
     public class ProductCreationDataModel
     {
@@ -14,6 +14,6 @@
 
         public int product_buying_price { get; set; }
 
-        public DateTime product_cration_date { get; set; } = new DateTime();
+        public DateTime product_cration_date { get; set; } = DateTime.Now;
     }
 }
